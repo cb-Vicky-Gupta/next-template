@@ -13,4 +13,5 @@ export const routePermissions = [
   },
 ];
 
+export const publicPaths = ["/login", "/unauthorized", "/api/public"];
 // matcher file where we can define roles and matcher file to give access based on roles
