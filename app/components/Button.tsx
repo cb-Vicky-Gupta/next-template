@@ -1,56 +1,79 @@
 import React from "react";
-
+import { twMerge } from "tailwind-merge";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
-  iconLeft?: React.ReactNode;
-  iconRight?: React.ReactNode;
-  variant?: "primary" | "secondary" | "outline" | "danger";
+  icon?: React.ReactNode;
+  iconRight?: true;
+  iconLeft?: true;
+  isDisable?: boolean;
+  variant?:
+    | "primary"
+    | "secondary"
+    | "outline"
+    | "danger"
+    | "warning"
+    | "disabled"
+    | "ghost"
+    | "outlineDanger"
+    | "outlinePrimary"
+    | "outlineSecondary"
+    | "outlineSuccess"
+    | "outlineWarning"
+    | "active"
+    | "disabledButton";
   size?: "sm" | "md" | "lg";
   fullWidth?: boolean;
 }
 
 const Button = ({
+  type,
+  icon,
   text,
-  iconLeft,
-  iconRight,
+  className,
+  onClick,
+  isDisable,
   variant = "primary",
-  size = "md",
-  fullWidth = false,
-  className = "",
-  disabled,
+  iconRight,
+  iconLeft,
   ...props
 }: ButtonProps) => {
-  const baseStyles =
-    "inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed";
-
-  const variantStyles: Record<typeof variant, string> = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700",
-    secondary: "bg-gray-200 text-gray-900 hover:bg-gray-300",
-    outline: "border border-gray-400 text-gray-700 hover:bg-gray-100",
-    danger: "bg-red-600 text-white hover:bg-red-700",
+  const variantStyles = {
+    primary: "bg-green-500 text-white hover:bg-green-700",
+    secondary: "bg-blue-500 text-white hover:bg-blue-700",
+    danger: "bg-red-500 text-white hover:bg-red-700",
+    warning: "bg-yellow-500 text-white hover:bg-yellow-700",
+    outline: "border border-black text-black hover:bg-gray-100",
+    disabled: "bg-gray-300 text-gray-500 cursor-not-allowed",
+    ghost: " text-black hover:bg-blue-200",
+    outlineDanger: "border border-red-500 text-red-500 hover:bg-red-100",
+    outlinePrimary: "border border-green-500 text-green-500 hover:bg-green-100",
+    outlineSecondary: "border border-blue-500 text-blue-500 hover:bg-blue-100",
+    outlineSuccess: "border border-green-500 text-green-500 hover:bg-green-100",
+    outlineWarning:
+      "border border-yellow-500 text-yellow-500 hover:bg-yellow-100",
+    active: "  bg-[#D9EBFF] text-[#0053AE] hover:bg-blue-300",
+    disabledButton: "bg-gray-300 text-gray-500 cursor-not-allowed",
   };
 
-  const sizeStyles: Record<typeof size, string> = {
-    sm: "px-3 py-1 text-sm",
-    md: "px-4 py-2 text-base",
-    lg: "px-6 py-3 text-lg",
-  };
+  const selectedVariantStyle = variantStyles[variant] || variantStyles.primary;
+
+  const buttonStyle = twMerge(
+    selectedVariantStyle,
+    "inline-flex items-center justify-center gap-2 px-2 py-1 text-sm leading-none rounded ease-in-out duration-300",
+    className
+  );
 
   return (
     <button
+      type={type}
+      onClick={onClick}
+      className={buttonStyle}
+      disabled={isDisable}
       {...props}
-      disabled={disabled}
-      className={`
-        ${baseStyles}
-        ${variantStyles[variant]}
-        ${sizeStyles[size]}
-        ${fullWidth ? "w-full" : ""}
-        ${className}
-      `}
     >
-      {iconLeft && <span>{iconLeft}</span>}
+      {icon && iconLeft && <span className="icon">{icon}</span>}
       {text}
-      {iconRight && <span>{iconRight}</span>}
+      {icon && iconRight && <span className="icon">{icon}</span>}
     </button>
   );
 };

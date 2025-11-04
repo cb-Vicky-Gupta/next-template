@@ -1,1 +1,14 @@
 @import "tailwindcss";
+@theme {
+  /* Define custom colors  here*/
+  --color-primary: #4caf50;
+  --color-secondary: #2196f3;
+  --color-danger: #f44336;
+  --color-warning: #ff9800;
+  /* define screen breakpoints here */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}
