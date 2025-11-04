@@ -20,8 +20,7 @@ This template is designed to be a solid starting point for real-world SaaS dashb
 
 ---
 
-## 📁 Folder Structure
-
+📁 Folder Structure
 next-template/
 ├── app/
 │ ├── layout.tsx
@@ -46,8 +45,6 @@ next-template/
 ├── tailwind.config.ts
 ├── tsconfig.json
 └── README.md
-
----
 
 ## 🎨 Design System (CSS Variables)
 
