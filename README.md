@@ -22,23 +22,28 @@ This template is designed to be a solid starting point for real-world SaaS dashb
 
 ## 📁 Folder Structure
 
+next-template/
 ├── app/
 │ ├── layout.tsx
 │ ├── page.tsx
-│ └── (routes)...
-├── middleware/
-│ ├── auth.ts
-│ ├── permissions.ts
-│ └── roles.ts
+│ └── (routes)/
+│ ├── admin/
+│ ├── dashboard/
+│ └── edit/
 ├── components/
 │ └── ui/
 │ ├── Button.tsx
 │ └── Card.tsx
+├── middleware/
+│ ├── auth.ts
+│ ├── roles.ts
+│ └── permissions.ts
 ├── styles/
 │ ├── globals.css
 │ └── typography.css
 ├── public/
 ├── middleware.ts
+├── tailwind.config.ts
 ├── tsconfig.json
 └── README.md
 
