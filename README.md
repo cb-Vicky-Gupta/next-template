@@ -51,6 +51,8 @@ Theme variables are declared in `globals.css`:
 }
 ```
 
+---
+
 git clone https://github.com/your-username/next-template.git
 cd next-template
 npm install
@@ -59,6 +61,14 @@ npm run dev
 NEXT_PUBLIC_API_URL=https://api.example.com
 JWT_SECRET=your_secret
 
-<Button text="Save" variant="primary" />
-<Button text="Delete" variant="danger" icon={<Trash />} />
-<Card>Reusable card with theme support</Card>
+---
+
+import { Card } from "@/components/ui/Card";
+
+export default function Example() {
+return (
+<Card title="Hello World">
+Reusable card with theme support
+</Card>
+);
+}
