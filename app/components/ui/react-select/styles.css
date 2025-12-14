@@ -1,0 +1,10 @@
+.react-select__control {
+  background-color: #1e1e1e !important;
+  border-color: #333 !important;
+}
+.react-select__menu {
+  background-color: #222 !important;
+}
+.react-select__option {
+  color: #fff !important;
+}
