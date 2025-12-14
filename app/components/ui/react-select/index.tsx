@@ -5,13 +5,11 @@ import Select, {
   StylesConfig,
 } from "react-select";
 
-/* ---------- Option Type ---------- */
 export interface SelectOption {
   label: string;
   value: string;
 }
 
-/* ---------- Component Props ---------- */
 interface MySelectProps
   extends SelectProps<SelectOption, boolean, GroupBase<SelectOption>> {
   allowSelectAll?: boolean;
@@ -20,7 +18,7 @@ interface MySelectProps
   handleKeyUp?: React.KeyboardEventHandler;
 }
 
-/* ---------- Styles ---------- */
+
 const customStyles: StylesConfig<SelectOption, boolean> = {
   control: (base) => ({
     ...base,
@@ -102,7 +100,7 @@ const customStylesDark: StylesConfig<SelectOption, boolean> = {
   indicatorSeparator: () => ({ display: "none" }),
 };
 
-/* ---------- Component ---------- */
+
 const MySelect = forwardRef<any, MySelectProps>((props, ref) => {
   const {
     allowSelectAll,

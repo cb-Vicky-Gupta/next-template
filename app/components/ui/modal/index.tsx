@@ -1,9 +1,7 @@
 "use client";
-
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { twMerge } from "tailwind-merge";
-
 interface ModalProps {
   open: boolean;
   onClose: () => void;
@@ -19,7 +17,6 @@ interface ModalProps {
   overlayClassName?: string;
 }
 
-/* ---------- Size Styles ---------- */
 const sizeClasses: Record<NonNullable<ModalProps["size"]>, string> = {
   sm: "max-w-sm",
   md: "max-w-md",
@@ -42,7 +39,6 @@ const Modal = ({
 }: ModalProps) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
 
-  /* ---------- ESC to Close ---------- */
   useEffect(() => {
     if (!open || !closeOnEsc) return;
 
@@ -54,7 +50,6 @@ const Modal = ({
     return () => document.removeEventListener("keydown", handleEsc);
   }, [open, closeOnEsc, onClose]);
 
-  /* ---------- Body Scroll Lock ---------- */
   useEffect(() => {
     if (!open) return;
 
@@ -66,7 +61,7 @@ const Modal = ({
     };
   }, [open]);
 
-  /* ---------- Focus on Open ---------- */
+
   useEffect(() => {
     if (open) modalRef.current?.focus();
   }, [open]);
@@ -93,7 +88,6 @@ const Modal = ({
         )}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         {(title || showCloseButton) && (
           <div className="mb-4 flex items-center justify-between">
             {title && (
@@ -114,8 +108,6 @@ const Modal = ({
             )}
           </div>
         )}
-
-        {/* Content */}
         <div className="max-h-[75vh] overflow-auto">
           {children}
         </div>

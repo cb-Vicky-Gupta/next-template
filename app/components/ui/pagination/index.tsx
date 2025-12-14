@@ -1,22 +1,16 @@
 "use client";
-
 import React from "react";
 import { twMerge } from "tailwind-merge";
-
-/* ---------- Props ---------- */
 export interface PaginationProps {
   totalItems: number;
   currentPage: number;
   itemsPerPage: number;
   onPageSelect: (page: number) => void;
-
   variant?: "primary" | "secondary" | "outline";
-
   className?: string;
   buttonClassName?: string;
 }
 
-/* ---------- Variant Styles ---------- */
 const variantStyles: Record<
   NonNullable<PaginationProps["variant"]>,
   {
@@ -42,7 +36,7 @@ const variantStyles: Record<
   },
 };
 
-/* ---------- Helpers ---------- */
+
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
 
@@ -66,7 +60,7 @@ const getVisiblePages = (
   );
 };
 
-/* ---------- Component ---------- */
+
 const Pagination: React.FC<PaginationProps> = ({
   totalItems,
   currentPage,
@@ -118,14 +112,13 @@ const Pagination: React.FC<PaginationProps> = ({
       )}
       aria-label="Pagination"
     >
-      {/* Prev */}
+      
       {renderButton(
         "Prev",
         safePage - 1,
         safePage === 1
       )}
 
-      {/* Page Numbers */}
       {pages.map((page, idx) =>
         page === "..." ? (
           <span
@@ -144,7 +137,7 @@ const Pagination: React.FC<PaginationProps> = ({
         )
       )}
 
-      {/* Next */}
+    
       {renderButton(
         "Next",
         safePage + 1,

@@ -1,34 +1,24 @@
 "use client";
-
 import  { useMemo, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import Pagination from "@/app/components/ui/pagination";
-
-/* ---------- Types ---------- */
-
 export interface TableColumn<T> {
   label: string;
   field: keyof T;
   width?: string;
   sortable?: boolean;
 }
-
 interface TableProps<T> {
   columns: TableColumn<T>[];
   rows: T[];
-
   pagination?: boolean;
   totalItems?: number;
   currentPage?: number;
   itemsPerPage?: number;
   onPageChange?: (page: number) => void;
-
   enableColumnSelect?: boolean;
   className?: string;
 }
-
-/* ---------- Component ---------- */
-
 function Table<T extends Record<string, any>>({
   columns,
   rows,
@@ -40,7 +30,6 @@ function Table<T extends Record<string, any>>({
   enableColumnSelect = false,
   className,
 }: TableProps<T>) {
-  /* ---------- Column Selection ---------- */
   const [visibleColumns, setVisibleColumns] = useState<string[]>(
     columns.map((c) => String(c.field))
   );
@@ -63,12 +52,8 @@ function Table<T extends Record<string, any>>({
     () => columns.filter((c) => visibleColumns.includes(String(c.field))),
     [columns, visibleColumns]
   );
-
-  /* ---------- Render ---------- */
-
   return (
     <div className="w-full">
-      {/* Column Selector */}
       {enableColumnSelect && (
         <div className="mb-3 flex flex-wrap items-center gap-4 text-sm">
           <label className="flex items-center gap-2 font-medium">
@@ -92,8 +77,6 @@ function Table<T extends Record<string, any>>({
           ))}
         </div>
       )}
-
-      {/* Table */}
       <div className="overflow-x-auto">
         <table
           className={twMerge(
@@ -146,8 +129,6 @@ function Table<T extends Record<string, any>>({
           </tbody>
         </table>
       </div>
-
-      {/* Pagination */}
       {pagination && totalItems > 0 && onPageChange && (
         <div className="mt-4 flex justify-end">
           <Pagination

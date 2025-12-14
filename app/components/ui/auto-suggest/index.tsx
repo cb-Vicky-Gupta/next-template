@@ -2,11 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-
-/* ---------- Generic Option Type ---------- */
 type OptionType = Record<string, any>;
-
-/* ---------- Props ---------- */
 interface AutoSuggestProps<T extends OptionType> {
   options: T[];
   labelKey?: keyof T;
@@ -23,8 +19,6 @@ interface AutoSuggestProps<T extends OptionType> {
   showLoader?: boolean;
   filterDelay?: number;
 }
-
-/* ---------- Component ---------- */
 function AutoSuggest<T extends OptionType>({
   options,
   labelKey = "label" as keyof T,
@@ -48,13 +42,9 @@ function AutoSuggest<T extends OptionType>({
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  /* ---------- Sync Controlled Value ---------- */
   useEffect(() => {
     setInputValue(value);
   }, [value]);
-
-  /* ---------- Handle Input Change ---------- */
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVal = e.target.value;
     setInputValue(newVal);
@@ -83,16 +73,12 @@ function AutoSuggest<T extends OptionType>({
       setLoading(false);
     }, filterDelay);
   };
-
-  /* ---------- Handle Select ---------- */
   const handleSelect = (option: T) => {
     const label = String(option[labelKey]);
     setInputValue(label);
     setShowSuggestions(false);
     onSelect?.(option[valueKey], label);
   };
-
-  /* ---------- Click Outside ---------- */
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
@@ -126,15 +112,11 @@ function AutoSuggest<T extends OptionType>({
           className
         )}
       />
-
-      {/* Loader */}
       {showLoader && loading && (
         <div className="absolute right-3 top-1/2 -translate-y-1/2">
           <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-blue-500" />
         </div>
       )}
-
-      {/* Suggestions */}
       {showSuggestions && filtered.length > 0 && (
         <div className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md border border-gray-200 bg-white shadow-lg">
           {filtered.map((opt, idx) => (

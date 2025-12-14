@@ -1,8 +1,6 @@
 import React, { forwardRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { Eye, EyeOff } from "lucide-react";
-
-/* ---------- Props ---------- */
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -13,8 +11,6 @@ export interface InputProps
   rightIcon?: React.ReactNode;
   containerClassName?: string;
 }
-
-/* ---------- Styles ---------- */
 const baseStyles =
   "w-full rounded-md px-3 py-2 text-sm outline-none transition disabled:cursor-not-allowed disabled:opacity-60";
 
@@ -27,7 +23,6 @@ const variantStyles = {
     "border border-transparent ring-1 ring-gray-300 focus:ring-2 focus:ring-blue-500",
 };
 
-/* ---------- Component ---------- */
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
@@ -58,7 +53,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={twMerge("flex flex-col gap-1", containerClassName)}>
-        {/* Label */}
         {label && (
           <label
             htmlFor={inputId}
@@ -67,15 +61,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {label}
           </label>
         )}
-
-        {/* Input Wrapper */}
         <div className="relative flex items-center">
           {leftIcon && (
             <span className="absolute left-3 text-gray-400">
               {leftIcon}
             </span>
           )}
-
           <input
             ref={ref}
             id={inputId}
@@ -92,8 +83,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             )}
             {...props}
           />
-
-          {/* Right Icon OR Password Toggle */}
           {isPassword ? (
             <button
               type="button"
@@ -112,8 +101,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             )
           )}
         </div>
-
-        {/* Helper / Error */}
         {error ? (
           <p className="text-xs text-red-500">{error}</p>
         ) : (
