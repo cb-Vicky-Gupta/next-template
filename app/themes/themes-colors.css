@@ -1,13 +1,115 @@
 @theme {
-  /* Define custom colors  here*/
-  --color-primary: #4caf50;
-  --color-secondary: #2196f3;
-  --color-danger: #f44336;
-  --color-warning: #ff9800;
-  /* define screen breakpoints here */
-  --breakpoint-*: initial;
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+
+  --color-background-100: var(--background-100);
+  --color-background-200: var(--background-200);
+  --color-background-300: var(--background-300);
+  --color-background-400: var(--background-400);
+  --color-background-500: var(--background-500);
+  --color-background-600: var(--background-600);
+
+  --color-secondary-100: var(--secondary-100);
+  --color-secondary-200: var(--secondary-200);
+  --color-secondary-300: var(--secondary-300);
+  --color-secondary-400: var(--secondary-400);
+  --color-secondary-500: var(--secondary-500);
+  --color-secondary-600: var(--secondary-600);
+
+  --color-success-100: var(--success-100);
+  --color-success-200: var(--success-200);
+  --color-success-300: var(--success-300);
+
+  --color-warning-100: var(--warning-100);
+  --color-warning-200: var(--warning-200);
+  --color-warning-300: var(--warning-300);
+
+  --color-danger-100: var(--danger-100);
+  --color-danger-200: var(--danger-200);
+  --color-danger-300: var(--danger-300);
+
+  --color-info-100: var(--info-100);
+  --color-info-200: var(--info-200);
+  --color-info-300: var(--info-300);
+}
+
+:root {
+  /* Primary colors - for buttons, links, accents */
+  --primary-100: #2a8fb8; /* button background - slightly deeper for better visibility */
+  --primary-200: #1a2830; /* main text - dark for good contrast */
+  --primary-300: #3d4f56; /* secondary text - dark enough to read */
+  --primary-400: #6b8a94; /* muted text */
+  --primary-500: #8aa8b2; /* subtle accents */
+
+  /* Background colors - with better differentiation */
+  --background-100: #ffffff; /* main page background - pure white */
+  --background-200: #f8fafb; /* body/section background - very subtle gray */
+  --background-300: #f0f5f7; /* card background - light gray-blue */
+  --background-400: #e2eaee; /* borders, dividers - visible but subtle */
+  --background-500: #1a3a52; /* dark accent (footer, etc.) */
+
+  /* Secondary colors - for text and UI elements */
+  --secondary-100: #f5f9f8; /* lightest - backgrounds */
+  --secondary-200: #e8f0ee; /* light - hover states */
+  --secondary-300: #3a5a52; /* medium dark - readable text */
+  --secondary-400: #4a6b62; /* darker - secondary text that needs to be visible */
+  --secondary-500: #2d4a42; /* dark - important secondary text */
+  --secondary-600: #1f3830; /* darkest - headings */
+
+  --success-100: #166534;
+  --success-200: #22c55e;
+  --success-300: #bbf7d0;
+
+  --warning-100: #92400e;
+  --warning-200: #f59e0b;
+  --warning-300: #fde68a;
+
+  --danger-100: #7f1d1d;
+  --danger-200: #ef4444;
+  --danger-300: #fecaca;
+
+  --info-100: #1e3a8a;
+  --info-200: #3b82f6;
+  --info-300: #bfdbfe;
+}
+
+.dark {
+  --primary-100: #2f7be8; /* button background */
+  --primary-200: #87cae6;/* text hero main heading */
+  --primary-300: #cbd2d7;/* text hero background */
+  --primary-400: #414451;/* text hero sub heading */
+  --primary-500: #50779c;/* price - text in product page*/
+
+  --background-100: #081225; /* hero background */
+  --background-200: #0d1d35; /* body background */
+  --background-300: #102445; /* card background */
+  --background-400: #10243e; /* review background */
+  --background-500: #172e43; /* table background */
+
+  --secondary-100: #1c2322;
+  --secondary-200: #313837;
+  --secondary-300: #474d4c;
+  --secondary-400: #5f6463;
+  --secondary-500: #777c7b;
+  --secondary-600: #777c7b;
+
+  --success-100: #22946e;
+  --success-200: #47d5a6;
+  --success-300: #9ae8ce;
+
+  --warning-100: #a87a2a;
+  --warning-200: #d7ac61;
+  --warning-300: #ecd7b2;
+
+  --danger-100: #a87a2a;
+  --danger-200: #d94a4a;
+  --danger-300: #eb9e9e;
+
+  --info-100: #21498a;
+  --info-200: #4077d1;
+  --info-300: #92b2e5;
 }
